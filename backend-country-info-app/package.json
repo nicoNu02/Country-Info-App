@@ -1,0 +1,19 @@
+{
+  "name": "backend-country-info-app",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "An application to get countries information",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "nodemon": "^3.1.7"
+  }
+}
