@@ -1,19 +1,13 @@
 import express from 'express';
 import {
-  getAllCountriesFlagsService,
-  getAllCountriesPopulationService,
-  getCountriesBordersService,
   getCountriesService,
+  getCountryInfoService,
 } from '../services/countriesService.js';
 
 const router = express.Router();
 
 router.get('/', getCountriesService);
 
-router.get('/borders/:code', getCountriesBordersService);
-
-router.get('/flags', getAllCountriesFlagsService);
-
-router.get('/population', getAllCountriesPopulationService);
+router.get('/info/:code', getCountryInfoService);
 
 export default router;

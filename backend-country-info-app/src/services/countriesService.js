@@ -1,8 +1,6 @@
 import {
-  getAllCountriesFlagsController,
-  getAllCountriesPopulationController,
-  getCountriesBordersController,
   getCountriesController,
+  getCountryInfoController,
 } from '../controllers/countriesController.js';
 
 export const getCountriesService = async (req, res) => {
@@ -15,34 +13,17 @@ export const getCountriesService = async (req, res) => {
   }
 };
 
-export const getCountriesBordersService = async (req, res) => {
+export const getCountryInfoService = async (req, res) => {
   try {
     const { code } = req.params;
     if (!code) {
       return res.status(400).json({ message: 'Country code is required' });
     }
-    const borders = await getCountriesBordersController(code);
+    if (code.length !== 2) {
+      return res.status(400).json({ message: 'Invalid country code' });
+    }
+    const borders = await getCountryInfoController(code);
     res.status(200).json(borders);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: error.message });
-  }
-};
-
-export const getAllCountriesFlagsService = async (req, res) => {
-  try {
-    const flags = await getAllCountriesFlagsController();
-    res.status(200).json(flags);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: error.message });
-  }
-};
-
-export const getAllCountriesPopulationService = async (req, res) => {
-  try {
-    const populationData = await getAllCountriesPopulationController();
-    res.status(200).json(populationData);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: error.message });
